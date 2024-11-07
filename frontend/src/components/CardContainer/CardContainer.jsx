@@ -40,7 +40,13 @@ const CardContainer = () => {
           />
         ))}
       </div>
-      <Pagination totalPages={data.totalPages} currentPage={page} setCurrentPage={setPage} />
+      <Pagination
+        totalPages={data.totalPages}
+        currentPage={page}
+        setCurrentPage={setPage}
+        setPageSize={setPageSize}
+        pageSize={pageSize}
+      />
     </>
   );
 };

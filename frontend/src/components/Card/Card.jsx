@@ -1,6 +1,5 @@
-/* eslint-disable react/prop-types */
-
 import "./Card.css";
+
 const Card = ({ title, body, imageLink }) => {
   return (
     <div className="card">
