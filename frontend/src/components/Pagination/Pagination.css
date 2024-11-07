@@ -1,0 +1,39 @@
+.pagination-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 3rem 0;
+}
+
+.pagination-button {
+  background-color: transparent;
+  border: none;
+  color: #133e87;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.pagination-button:hover {
+  transform: scale(1.1);
+  text-decoration: underline;
+}
+
+.toggle-button {
+  background-color: #133e87;
+  opacity: 0.6;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 6px;
+  border-radius: 100%;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.toggle-button:hover {
+  transform: scale(1.1);
+  background-color: #1d4b9c;
+  opacity: 1;
+}
