@@ -11,7 +11,7 @@ cd ../backend && npm install
 - Create an .env file in the backend folder.
 - Add the necessary environment variables as shown below.
 
-# Backend .env
+### Backend .env
  Example:
 - PORT=5000
 - BASE_URL=https://newsapi.org/v2/top-headlines
