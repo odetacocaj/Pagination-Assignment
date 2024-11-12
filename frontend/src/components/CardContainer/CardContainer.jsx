@@ -3,22 +3,25 @@ import "./CardContainer.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Pagination from "../Pagination/Pagination";
+import Filter from "../Filter/Filter";
 
 const CardContainer = () => {
   const [data, setData] = useState([]);
-  const [page, setPage] = useState(1);
-  const [pageSize, setPageSize] = useState(6);
+  const [filteredData, setFilteredData] = useState([]);
+  const [paginatedData, setPaginatedData] = useState([]);
 
   const fetchData = async () => {
     try {
-      const response = await axios.get(`http://localhost:5000/posts`, {
+      const response = await axios.get(`https://newsapi.org/v2/top-headlines`, {
         params: {
-          page: page,
-          pageSize: pageSize,
+          country: "us",
+          apiKey: "eceee8a4826e496bb4b015a6c8a21c58",
         },
       });
 
-      setData(response.data);
+      const allArticles = response?.data.articles;
+      setData(allArticles);
+      setFilteredData(allArticles);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -26,12 +29,23 @@ const CardContainer = () => {
 
   useEffect(() => {
     fetchData();
-  }, [page, pageSize]);
+  }, []);
+
+  const handleFilter = (filtered) => {
+    setFilteredData(filtered);
+  };
+
+  const handlePaginatedDataChange = (newPaginatedData) => {
+    setPaginatedData(newPaginatedData);
+  };
 
   return (
     <>
+      <div className="filter">
+        <Filter data={data} onFilter={handleFilter} name="title" />
+      </div>
       <div className="card-container">
-        {data?.articles?.map((card) => (
+        {paginatedData.map((card) => (
           <Card
             key={card.title}
             title={card.title}
@@ -40,13 +54,7 @@ const CardContainer = () => {
           />
         ))}
       </div>
-      <Pagination
-        totalPages={data.totalPages}
-        currentPage={page}
-        setCurrentPage={setPage}
-        setPageSize={setPageSize}
-        pageSize={pageSize}
-      />
+      <Pagination data={filteredData} onPageChange={handlePaginatedDataChange} />
     </>
   );
 };

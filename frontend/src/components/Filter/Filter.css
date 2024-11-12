@@ -1,0 +1,25 @@
+.filter_input {
+  padding: 10px 15px;
+  font-size: 16px;
+  color: #333;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  outline: none;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.filter_input:focus {
+  border-color: #007bff;
+  background-color: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 123, 255, 0.3);
+}
+
+.filter_input::placeholder {
+  color: #aaa;
+}
+
+.filter_input:hover {
+  background-color: #fdfdfd;
+}
